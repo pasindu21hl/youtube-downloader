@@ -20,7 +20,7 @@ def download_video():
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
-            filename = ydl.prepare_filename(info).replace("\", "/")
+            filename = ydl.prepare_filename(info).replace("\\", "/")
             filename = os.path.basename(filename)
         return jsonify({'success': True, 'filename': f"/downloads/{filename}"})
     except Exception as e:
